@@ -6,25 +6,63 @@ using System.Threading.Tasks;
 
 namespace LAB04
 {
-    public class Classroom
+    internal class Classroom
     {
-        private string name;
-        List<Person> persons = new List<Person>();
-        private double AvgGPA = 0;
+        public List<Person> StudentList = new List<Person>();
+        public List<int> YearList = new List<int>();
+        public List<double> GradeList = new List<double>();
+        public List<string> NameList = new List<string>();
 
-        public Classroom(string name )
+        public void addStudent(Person students)
         {
-            this.name = name;
+            StudentList.Add(students);
+            YearList.Add(students.Year);
+
         }
-        public void addPerson2Class(Person p) {
-            this.persons.Add( p );
-        }
-        public string showAllPersoninClass() {
-            string result = "";
-            foreach (Person p in this.persons) {
-                result += p.getName() + "\r\n";
+        public string ShowStudent()
+        {
+            string results = "";
+            foreach (var student in StudentList)
+            {
+                results += student.Name + "\r\n";
             }
-            return result;      
+            return results;
+        }
+        public int ShowAllAge()
+        {
+
+            return YearList.Sum();
+        }
+
+        public void SetGrade()
+        {
+            foreach (var student in StudentList)
+            {
+                GradeList.Add(student.Grade);
+                NameList.Add(student.Name);
+            }
+        }
+        public double ShowMaxGrade()
+        {
+            return GradeList.Max();
+        }
+        public double ShowMinGrade()
+        {
+            return GradeList.Min();
+        }
+
+        public string ShowMaxGradeName()
+        {
+            return NameList[GradeList.IndexOf(GradeList.Max())];
+        }
+        public string ShowMinGradeName()
+        {
+            return NameList[GradeList.IndexOf(GradeList.Min())];
+        }
+
+        public double ShowAvgGPA()
+        {
+            return GradeList.Sum() / GradeList.Count();
         }
     }
 }

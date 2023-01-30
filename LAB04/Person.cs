@@ -8,20 +8,14 @@ namespace LAB04
 {
     public class Person
     {
-        private string name;
-        private double grade;
-        private int birthday;
-
-        public Person(string name ,int bYear, double dGrade) {
-            this.name = name;
-            this.birthday = bYear;
-            this.grade = dGrade;
-        }
-        public double getdGrade() { 
-            return grade;
-        }
-        public string getName() {
-            return this.name;
+        public string Name { get; set; }
+        public int Year { get; set; }
+        public double Grade { get; set; }
+        public Person(string name, int year, double grade)
+        {
+            this.Name = name;
+            this.Year = 2566 - year;
+            this.Grade = grade;
         }
     }
 }
